@@ -1,6 +1,6 @@
 // API Configuration
 const API_CONFIG = {
-    baseUrl: 'http://localhost:5001',
+    baseUrl: 'https://newsapi-backend-fnyb.onrender.com',
     endpoints: {
         news: '/api/v1/news',
         articles: '/articles',

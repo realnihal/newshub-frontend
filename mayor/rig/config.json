@@ -1,0 +1,10 @@
+{
+  "type": "rig",
+  "version": 1,
+  "name": "NewsWeb",
+  "description": "Modern news website consuming NewsAPI",
+  "default_branch": "main",
+  "beads": {
+    "prefix": "nw"
+  }
+}

@@ -205,7 +205,7 @@ class NewsApp {
         }
 
         grid.innerHTML = this.topics.map((topic, index) =>
-            this.createTopicCard(topic, index === 0)
+            this.createTopicCard(topic, index === 0, index >= 3)
         ).join('');
 
         // Add click handlers for topic cards
@@ -214,11 +214,13 @@ class NewsApp {
         });
     }
 
-    createTopicCard(topic, featured = false) {
+    createTopicCard(topic, featured = false, compact = false) {
         const hasImage = topic.thumbnail && topic.thumbnail.length > 0;
         const keywords = topic.keywords ? topic.keywords.slice(0, 4) : [];
         const sources = topic.sources ? topic.sources.slice(0, 3) : [];
         const timeAgo = this.formatTimeAgo(topic.updated_at);
+        const isRecent = topic.updated_at &&
+            (Date.now() - new Date(topic.updated_at).getTime()) < 7200000;
 
         const imageContent = hasImage
             ? `<img src="${this.escapeHtml(topic.thumbnail)}" alt="${this.escapeHtml(topic.title)}" onerror="this.parentElement.innerHTML='<div class=\\'placeholder-image\\'><svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'48\\' height=\\'48\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'1\\'><path d=\\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\\'></path><polyline points=\\'14 2 14 8 20 8\\'></polyline></svg></div>'">`
@@ -241,15 +243,15 @@ class NewsApp {
         ` : '';
 
         return `
-            <article class="topic-card ${featured ? 'featured' : ''}" data-topic-id="${topic.id}">
+            <article class="topic-card ${featured ? 'featured' : ''} ${compact ? 'compact' : ''}" data-topic-id="${topic.id}">
                 <div class="topic-card-header">
                     ${imageContent}
-                    <div class="topic-card-badge">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <div class="topic-card-badge ${isRecent ? 'recent' : ''}">
+                        ${isRecent ? 'NEW' : `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                             <polyline points="14 2 14 8 20 8"></polyline>
                         </svg>
-                        ${topic.article_count} articles
+                        ${topic.article_count} articles`}
                     </div>
                 </div>
                 <div class="topic-card-content">

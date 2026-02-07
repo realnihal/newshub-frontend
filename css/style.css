@@ -873,8 +873,8 @@ button {
 /* Topics Grid */
 .topics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
 }
 
 /* Topic Card */
@@ -898,7 +898,7 @@ button {
 
 .topic-card-header {
     position: relative;
-    height: 200px;
+    height: 150px;
     overflow: hidden;
 }
 
@@ -941,34 +941,34 @@ button {
 }
 
 .topic-card-content {
-    padding: 1.5rem;
+    padding: 1rem;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 .topic-card-title {
-    font-size: 1.25rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
     color: var(--text-primary);
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 .topic-card-summary {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.8rem;
+    line-height: 1.5;
     flex: 1;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .topic-card-keywords {
@@ -981,9 +981,9 @@ button {
 .keyword-tag {
     background: var(--accent-light);
     color: var(--accent);
-    padding: 0.375rem 0.75rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 50px;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 600;
 }
 
@@ -1029,12 +1029,12 @@ button {
 }
 
 .topic-card.featured .topic-card-title {
-    font-size: 1.625rem;
+    font-size: 1.1rem;
 }
 
 .topic-card.featured .topic-card-summary {
-    -webkit-line-clamp: 6;
-    font-size: 1rem;
+    -webkit-line-clamp: 4;
+    font-size: 0.85rem;
 }
 
 /* Responsive */
